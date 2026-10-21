@@ -1,688 +1,340 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ammar Mansour | Shopify Developer</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Cairo',sans-serif;
-      scroll-behavior:smooth;
-    }
-
-    body{
-      background:#020617;
-      color:white;
-      overflow-x:hidden;
-    }
-
-    a{
-      text-decoration:none;
-    }
-
-    /* ===== NAVBAR ===== */
-
-    header{
-      width:100%;
-      position:fixed;
-      top:0;
-      left:0;
-      z-index:1000;
-      background:rgba(2,6,23,.92);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(34,197,94,.2);
-    }
-
-    .navbar{
-      width:90%;
-      max-width:1300px;
-      margin:auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px 0;
-    }
-
-    .logo{
-      font-size:30px;
-      font-weight:800;
-      color:#22c55e;
-      letter-spacing:1px;
-    }
-
-    .nav-links{
-      display:flex;
-      gap:30px;
-    }
-
-    .nav-links a{
-      color:#cbd5e1;
-      font-weight:600;
-      transition:.3s;
-    }
-
-    .nav-links a:hover{
-      color:#22c55e;
-    }
-
-    /* ===== HERO ===== */
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:140px 8% 80px;
-      background:
-      radial-gradient(circle at top left, rgba(34,197,94,.15), transparent 25%),
-      radial-gradient(circle at bottom right, rgba(30,64,175,.15), transparent 25%),
-      linear-gradient(135deg,#020617,#071329,#020617);
-      position:relative;
-    }
-
-    .hero-container{
-      width:100%;
-      max-width:1300px;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:70px;
-      align-items:center;
-    }
-
-    .hero-text h1{
-      font-size:70px;
-      line-height:1.1;
-      margin-bottom:25px;
-      font-weight:800;
-    }
-
-    .hero-text h1 span{
-      color:#22c55e;
-    }
-
-    .hero-text p{
-      color:#cbd5e1;
-      font-size:20px;
-      line-height:1.9;
-      margin-bottom:35px;
-      max-width:700px;
-    }
-
-    .hero-buttons{
-      display:flex;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:15px 35px;
-      border-radius:14px;
-      font-size:17px;
-      font-weight:700;
-      transition:.3s;
-      display:inline-block;
-    }
-
-    .btn-primary{
-      background:#22c55e;
-      color:#020617;
-      box-shadow:0 10px 25px rgba(34,197,94,.25);
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-5px);
-      background:#16a34a;
-    }
-
-    .btn-outline{
-      border:1px solid #22c55e;
-      color:#22c55e;
-    }
-
-    .btn-outline:hover{
-      background:#22c55e;
-      color:#020617;
-    }
-
-    .hero-image{
-      position:relative;
-    }
-
-    .hero-image img{
-      width:100%;
-      border-radius:30px;
-      border:2px solid rgba(34,197,94,.35);
-      box-shadow:0 25px 70px rgba(0,0,0,.55);
-      animation:float 5s ease-in-out infinite;
-    }
-
-    @keyframes float{
-      0%{transform:translateY(0px);}
-      50%{transform:translateY(-12px);}
-      100%{transform:translateY(0px);}
-    }
-
-    /* ===== SECTION ===== */
-
-    section{
-      padding:110px 8%;
-    }
-
-    .section-title{
-      text-align:center;
-      margin-bottom:70px;
-    }
-
-    .section-title h2{
-      font-size:48px;
-      margin-bottom:15px;
-      color:#22c55e;
-    }
-
-    .section-title p{
-      color:#94a3b8;
-      font-size:18px;
-    }
-
-    /* ===== ABOUT ===== */
-
-    .about{
-      background:#08111f;
-    }
-
-    .about-box{
-      max-width:1100px;
-      margin:auto;
-      background:#0f172a;
-      border:1px solid rgba(34,197,94,.15);
-      border-radius:30px;
-      padding:55px;
-      box-shadow:0 20px 50px rgba(0,0,0,.35);
-    }
-
-    .about-box p{
-      color:#cbd5e1;
-      font-size:20px;
-      line-height:2;
-      margin-bottom:25px;
-    }
-
-    .skills{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:20px;
-      margin-top:40px;
-    }
-
-    .skill{
-      background:#020617;
-      border:1px solid rgba(34,197,94,.2);
-      padding:22px;
-      text-align:center;
-      border-radius:18px;
-      color:#22c55e;
-      font-weight:700;
-      transition:.3s;
-    }
-
-    .skill:hover{
-      transform:translateY(-5px);
-      border-color:#22c55e;
-    }
-
-    /* ===== PROJECTS ===== */
-
-    .projects{
-      background:
-      linear-gradient(135deg,#020617,#071329,#020617);
-    }
-
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;
-      max-width:1300px;
-      margin:auto;
-    }
-
-    .project-card{
-      background:#0f172a;
-      border-radius:28px;
-      padding:35px;
-      border:1px solid rgba(34,197,94,.15);
-      transition:.4s;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .project-card::before{
-      content:'';
-      position:absolute;
-      width:120px;
-      height:120px;
-      background:rgba(34,197,94,.08);
-      border-radius:50%;
-      top:-40px;
-      right:-40px;
-    }
-
-    .project-card:hover{
-      transform:translateY(-10px);
-      border-color:#22c55e;
-      box-shadow:0 25px 50px rgba(34,197,94,.12);
-    }
-
-    .project-card h3{
-      font-size:28px;
-      color:#22c55e;
-      margin-bottom:18px;
-    }
-
-    .project-card p{
-      color:#cbd5e1;
-      margin-bottom:25px;
-      line-height:1.8;
-    }
-
-    .project-card .password{
-      color:#facc15;
-      font-weight:700;
-      margin-bottom:25px;
-      display:block;
-    }
-
-    .project-btn{
-      display:inline-block;
-      padding:13px 24px;
-      border-radius:12px;
-      background:#22c55e;
-      color:#020617;
-      font-weight:700;
-      transition:.3s;
-    }
-
-    .project-btn:hover{
-      background:#16a34a;
-    }
-
-    /* ===== CONTACT ===== */
-
-    .contact{
-      background:#08111f;
-    }
-
-    .contact-box{
-      max-width:1000px;
-      margin:auto;
-      text-align:center;
-      background:#0f172a;
-      padding:60px;
-      border-radius:30px;
-      border:1px solid rgba(34,197,94,.18);
-    }
-
-    .contact-box h2{
-      font-size:45px;
-      margin-bottom:20px;
-      color:#22c55e;
-    }
-
-    .contact-box p{
-      color:#cbd5e1;
-      font-size:20px;
-      line-height:1.9;
-      margin-bottom:35px;
-    }
-
-    /* ===== FOOTER ===== */
-
-    footer{
-      text-align:center;
-      padding:30px;
-      background:#020617;
-      border-top:1px solid rgba(34,197,94,.15);
-      color:#64748b;
-    }
-
-    /* ===== MOBILE ===== */
-
-    @media(max-width:950px){
-
-      .hero-container{
-        grid-template-columns:1fr;
-      }
-
-      .hero-text{
-        text-align:center;
-      }
-
-      .hero-text h1{
-        font-size:48px;
-      }
-
-      .skills{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .nav-links{
-        display:none;
-      }
-
-    }
-
-    @media(max-width:600px){
-
-      .hero-text h1{
-        font-size:40px;
-      }
-
-      .section-title h2{
-        font-size:36px;
-      }
-
-      .skills{
-        grid-template-columns:1fr;
-      }
-
-      .about-box,
-      .contact-box{
-        padding:35px 25px;
-      }
-
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ammar Mansour | Shopify Developer & UI/UX Expert</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #38bdf8;
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Banner Section */
+        .hero-banner {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .hero-content h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .dynamic-text {
+            font-weight: 600;
+            color: var(--accent-color);
+            min-height: 30px;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            padding: 5px;
+            background: var(--accent-gradient);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #fff;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        .badge-scratch {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-color);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .badge-edit {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .password-hint {
+            font-size: 0.85rem;
+            color: #facc15;
+            background: rgba(250, 204, 21, 0.1);
+            padding: 4px 10px;
+            border-radius: 8px;
+        }
+
+        .btn-visit {
+            display: inline-block;
+            padding: 8px 18px;
+            background: var(--accent-gradient);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-visit:hover {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-banner {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-image-container {
+                margin: 0 auto;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- ===== NAVBAR ===== -->
+    <div class="container">
+        <!-- Hero Banner with Personal Image & Dynamic Messages -->
+        <header class="hero-banner">
+            <div class="hero-content">
+                <h1>أهلاً بك، أنا <span>عمار منصور</span></h1>
+                <p>Shopify Developer & E-commerce UI/UX Expert</p>
+                <div class="dynamic-text" id="dynamicText">أبني متاجر إلكترونية احترافية من الصفر...</div>
+            </div>
+            <div class="hero-image-container">
+                <!-- استبدل رابط الصورة برابط صورتك المرفوعة أو اسم الملف المحلي -->
+                <img src="path_to_your_image.jpg" alt="عمار منصور">
+            </div>
+        </header>
 
-<header>
-  <div class="navbar">
+        <!-- Section 1: Built from Scratch -->
+        <h2 class="section-title">🚀 متاجر تم بناؤها من الصفر (Built from Scratch)</h2>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <span class="badge badge-scratch">من الصفر (Scratch)</span>
+                <h3>Bytebox Store</h3>
+                <p>متجر إلكتروني متكامل تم تصميمه برمجته وتطويره بالكامل من الصفر على منصة Shopify.</p>
+                <div class="project-footer">
+                    <span class="password-hint">كلمة المرور: 1</span>
+                    <a href="https://bytebox-ammar.myshopify.com" target="_blank" class="btn-visit">زيارة المتجر</a>
+                </div>
+            </div>
 
-    <div class="logo">
-      Ammar Mansour
+            <!-- Project 2 -->
+            <div class="project-card">
+                <span class="badge badge-scratch">من الصفر (Scratch)</span>
+                <h3>Town Eagle Store</h3>
+                <p>بناء متجر إلكتروني احترافي مخصص لعرض المنتجات بأعلى معايير تجربة المستخدم.</p>
+                <div class="project-footer">
+                    <span class="password-hint">كلمة المرور: 1</span>
+                    <a href="https://town-eagle-ammar.myshopify.com" target="_blank" class="btn-visit">زيارة المتجر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Customizations & Edits -->
+        <h2 class="section-title">⚡ تعديلات وتطويرات احترافية (Edits & Customizations)</h2>
+        <div class="projects-grid">
+            <!-- Project 3 -->
+            <div class="project-card">
+                <span class="badge badge-edit">إعدیل وتطوير (Edit)</span>
+                <h3>Galabety Store</h3>
+                <p>عمل تعديلات وتطويرات برمجية واحترافية على المتجر لرفع كفاءة الأداء وتجربة الاستخدام.</p>
+                <div class="project-footer">
+                    <span style="color: var(--text-secondary); font-size: 0.85rem;">بدون كلمة مرور</span>
+                    <a href="https://galabety.com/en" target="_blank" class="btn-visit">زيارة المتجر</a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <span class="badge badge-edit">تعديل وتطوير (Edit)</span>
+                <h3>Forsa Store</h3>
+                <p>تخصيص متجر إلكتروني بنظام الأفيليت وتعديل الأقسام والـ Sections لتناسب أهداف العميل.</p>
+                <div class="project-footer">
+                    <span style="color: var(--text-secondary); font-size: 0.85rem;">بدون كلمة مرور</span>
+                    <a href="https://forsaeg.shop/" target="_blank" class="btn-visit">زيارة المتجر</a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <span class="badge badge-edit">تعديل وتطوير (Edit)</span>
+                <h3>Mount Kicks Store</h3>
+                <p>تطوير وتحسين واجهات المتجر وإضافة لمسات برمجية خاصة (Liquid/CSS/JS).</p>
+                <div class="project-footer">
+                    <span style="color: var(--text-secondary); font-size: 0.85rem;">بدون كلمة مرور</span>
+                    <a href="https://mountkicks.myshopify.com/" target="_blank" class="btn-visit">زيارة المتجر</a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About Me</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-  </div>
-</header>
-
-<!-- ===== HERO ===== -->
-
-<section class="hero" id="home">
-
-  <div class="hero-container">
-
-    <div class="hero-text">
-
-      <h1>
-        Professional <span>Shopify</span><br>
-        Developer
-      </h1>
-
-      <p>
-        I design and develop modern Shopify stores with professional layouts,
-        responsive designs, smooth user experience, and high-converting pages
-        that help brands grow and maximize sales.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#projects" class="btn btn-primary">
-          View Projects
-        </a>
-
-        <a href="#about" class="btn btn-outline">
-          About Me
-        </a>
-      </div>
-
-    </div>
-
-    <div "
-    
-      " ">
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ===== ABOUT ===== -->
-
-<section class="about" id="about">
-
-  <div class="section-title">
-    <h2>About Me</h2>
-    <p>Who is Ammar Mansour?</p>
-  </div>
-
-  <div class="about-box">
-
-    <p>
-      My name is <strong style="color:#22c55e;">Ammar Mansour</strong>,
-      and I am a Shopify Developer specialized in building modern,
-      responsive, and high-converting Shopify stores.
-    </p>
-
-    <p>
-      I study at the Faculty of Mass Communication, Al-Azhar University,
-      and I graduated from <strong style="color:#22c55e;">E-Cart</strong>,
-      where I improved my experience in Shopify store design,
-      branding, and eCommerce development.
-    </p>
-
-    <p>
-      I have worked on multiple Shopify projects and developed stores
-      with professional layouts, attractive UI designs,
-      optimized product pages, and smooth shopping experiences
-      focused on increasing conversions and sales.
-    </p>
-
-    <div class="skills">
-
-      <div class="skill">Shopify Development</div>
-
-      <div class="skill">Responsive Design</div>
-
-      <div class="skill">HTML & CSS</div>
-
-      <div class="skill">UI / UX</div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ===== PROJECTS ===== -->
-
-<section class="projects" id="projects">
-
-  <div class="section-title">
-    <h2>My Projects</h2>
-    <p>Some Shopify stores designed and developed by me</p>
-  </div>
-
-  <div class="projects-grid">
-
-    <!-- CARD -->
-
-    <div class="project-card">
-
-      <h3>Maroo Workshop</h3>
-
-      <p>
-        Modern Shopify store with clean layout and optimized shopping experience.
-      </p>
-
-      <span class="password">
-        Store Password: 1
-      </span>
-
-      <a href="https://maroo-workshop.myshopify.com"
-         target="_blank"
-         class="project-btn">
-
-         Visit Store
-
-      </a>
-
-    </div>
-
-    <!-- CARD -->
-
-    <div class="project-card">
-
-      <h3>Linah Farms</h3>
-
-      <p>
-        Professional Shopify store with responsive structure and elegant design.
-      </p>
-
-      <span class="password">
-        Store Password: 1
-      </span>
-
-      <a href="https://linah-farms-com.myshopify.com"
-         target="_blank"
-         class="project-btn">
-
-         Visit Store
-
-      </a>
-
-    </div>
-
-    <!-- CARD -->
-
-    <div class="project-card">
-
-      <h3>Totes Ammar</h3>
-
-      <p>
-        Stylish eCommerce store with smooth navigation and product presentation.
-      </p>
-
-      <span class="password">
-        Store Password: 1
-      </span>
-
-      <a href="https://totes-ammar.myshopify.com"
-         target="_blank"
-         class="project-btn">
-
-         Visit Store
-
-      </a>
-
-    </div>
-
-    <!-- CARD -->
-
-    <div class="project-card">
-
-      <h3>Seven Secrets</h3>
-
-      <p>
-        Beauty Shopify store focused on branding, product display, and UX.
-      </p>
-
-      <span class="password">
-        Store Password: 1
-      </span>
-
-      <a href="https://seven-secrets-cosmetiks-ammar.myshopify.com"
-         target="_blank"
-         class="project-btn">
-
-         Visit Store
-
-      </a>
-
-    </div>
-
-    <!-- CARD -->
-
-    <div class="project-card">
-
-      <h3>Bareeq Ammar</h3>
-
-      <p>
-        High-quality Shopify store with modern sections and responsive design.
-      </p>
-
-      <span class="password">
-        Store Password: 1
-      </span>
-
-      <a href="https://bareeq-ammar.myshopify.com"
-         target="_blank"
-         class="project-btn">
-
-         Visit Store
-
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ===== CONTACT ===== -->
-
-<section class="contact" id="contact">
-
-  <div class="contact-box">
-
-    <h2>
-      Need A Professional Shopify Store?
-    </h2>
-
-    <p>
-      I can help you create a modern Shopify store with
-      responsive layouts, premium design, and optimized user experience
-      to grow your business professionally.
-    </p><a href="https://wa.me/201014545306?text=Hello%20Ammar%2C%20I%20want%20a%20professional%20Shopify%20store"
-   target="_blank"
-   class="btn btn-primary">
-
-   Contact Me
-
-</a>
-
-       
-
-    </a>
-
-  </div>
-
-</section>
-
-<!-- ===== FOOTER ===== -->
-
-<footer>
-
-  © 2026 Ammar Mansour — Shopify Developer
-
-</footer>
-
+    <!-- JavaScript for Dynamic Text Animation -->
+    <script>
+        const messages = [
+            "أبني متاجر إلكترونية احترافية من الصفر... 💻",
+            "متخصص في Shopify, Liquid, & JavaScript ⚡",
+            "شغوف بتحويل أفكارك إلى منصات تسويقية ناجحة 🚀",
+            "خبرة في التعديل وتطوير واجهات المتاجر والـ UI/UX 🎨"
+        ];
+
+        let messageIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const dynamicTextElement = document.getElementById("dynamicText");
+
+        function typeEffect() {
+            const currentMessage = messages[messageIndex];
+            
+            if (isDeleting) {
+                dynamicTextElement.textContent = currentMessage.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                dynamicTextElement.textContent = currentMessage.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentMessage.length) {
+                typeSpeed = 2000; // Pause at the end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                messageIndex = (messageIndex + 1) % messages.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (messages.length > 0) {
+                setTimeout(typeEffect, 1000);
+            }
+        });
+    </script>
 </body>
 </html>
